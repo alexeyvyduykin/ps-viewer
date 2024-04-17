@@ -3,7 +3,7 @@ using FlatSpace.Utils;
 
 namespace FlatSpace;
 
-public static class SpaceScienceFactory
+public static class FlatSpaceFactory
 {
     public static Orbit CreateOrbit(double a, double inclDeg)
     {
