@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi", "src\webapi\webapi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pscli", "src\pscli\pscli.csproj", "{4E6549D3-C4C4-4F95-AD9F-F027675F696A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{7BF2EA64-BA60-4859-828E-99360DA43786}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Models", "shared\Shared.Models\Shared.Models.csproj", "{5043DFEE-DE7F-4338-803C-899F7F2956EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{4E6549D3-C4C4-4F95-AD9F-F027675F696A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E6549D3-C4C4-4F95-AD9F-F027675F696A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E6549D3-C4C4-4F95-AD9F-F027675F696A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5043DFEE-DE7F-4338-803C-899F7F2956EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5043DFEE-DE7F-4338-803C-899F7F2956EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5043DFEE-DE7F-4338-803C-899F7F2956EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5043DFEE-DE7F-4338-803C-899F7F2956EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +47,9 @@ Global
 		{2693351E-445B-4875-85CB-C10D80528A90} = {606A210C-8327-4AB3-B413-1B8929D965F7}
 		{C64BFB1E-4D59-4295-A6E6-F7D466D3AB8D} = {43411B52-1746-4C5A-B83C-2B905E39F8F1}
 		{4E6549D3-C4C4-4F95-AD9F-F027675F696A} = {43411B52-1746-4C5A-B83C-2B905E39F8F1}
+		{5043DFEE-DE7F-4338-803C-899F7F2956EB} = {7BF2EA64-BA60-4859-828E-99360DA43786}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD4719A7-EF84-45F0-81CE-DEB23306EC44}
 	EndGlobalSection
 EndGlobal
