@@ -132,40 +132,7 @@ public static class Sats
     {
         var psOptions = AppOptions.Load();
 
-        var count = psOptions.Satellites.Count;
-
-        if (count == 0)
-        {
-            Console.WriteLine("Satellite array is empty");
-        }
-        else
-        {
-            var sats = psOptions.Satellites;
-
-            Console.WriteLine();
-            Console.WriteLine("{0,-20} {1,12} {2,12} {3, 12} {4, 12} {5, 12} {6, 12} {7, 12} {8, 24} {9, 12} {10, 12}\n",
-                "name", "sa, km", "ecc", "incl, deg", "argOfPer, deg", "lan, deg", "raan, deg", "period, sec", "epoch", "look, deg", "radar, deg");
-
-            for (int i = 0; i < sats.Count; i++)
-            {
-                Console.WriteLine(
-                    "{0,-20} {1,12:N2} {2,12:N2} {3,12:N2} {4,12:N2} {5,12:N2} {6,12:N2} {7,12:N2} {8,24} {9,12:N2} {10,12:N2}",
-                    sats[i].Name,
-                    sats[i].Semiaxis,
-                    sats[i].Eccentricity,
-                    sats[i].InclinationDeg,
-                    sats[i].ArgumentOfPerigeeDeg,
-                    sats[i].LongitudeAscendingNodeDeg,
-                    sats[i].RightAscensionAscendingNodeDeg,
-                    sats[i].Period,
-                    sats[i].Epoch,
-                    sats[i].LookAngleDeg,
-                    sats[i].RadarAngleDeg
-                );
-            }
-
-            Console.WriteLine();
-        }
+        Helper.SatellitesInfo(psOptions.Satellites);
     }
 
     public static void Template(SatelliteTemplate template)

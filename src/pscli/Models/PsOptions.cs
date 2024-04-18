@@ -9,4 +9,8 @@ public class PsOptions
     public SatelliteTemplate SatelliteTemplate { get; set; } = new();
 
     public string ConnectionString { get; set; } = "";
+
+    public string? CurrentPsDataName { get; set; }
+
+    public int? CurrentGts { get; set; }
 }

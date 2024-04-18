@@ -32,6 +32,8 @@ public static class Push
         if (psData is { })
         {
             await psService.AddAsync(psData);
+
+            Console.WriteLine("PsData pushed to database.");
         }
     }
 }

@@ -13,6 +13,7 @@ class Program
         rootCommand.AddCommand(Create.CreateCommand());
         rootCommand.AddCommand(Connect.CreateCommand());
         rootCommand.AddCommand(Push.CreateCommand());
+        rootCommand.AddCommand(Info.CreateCommand());
 
         return await rootCommand.InvokeAsync(args);
     }

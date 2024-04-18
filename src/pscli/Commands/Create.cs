@@ -49,6 +49,11 @@ public static class Create
 
         AppData.Save(psData);
 
+        psOptions.CurrentPsDataName = name;
+        psOptions.CurrentGts = gtsCount;
+
+        AppOptions.Save(psOptions);
+
         Console.WriteLine($"{name} created.");
     }
 }
