@@ -11,6 +11,8 @@ class Program
 
         rootCommand.AddCommand(Sats.CreateCommand());
         rootCommand.AddCommand(Create.CreateCommand());
+        rootCommand.AddCommand(Connect.CreateCommand());
+        rootCommand.AddCommand(Push.CreateCommand());
 
         return await rootCommand.InvokeAsync(args);
     }

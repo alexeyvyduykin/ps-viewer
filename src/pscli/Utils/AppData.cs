@@ -1,5 +1,6 @@
 ﻿using NetTopologySuite.IO;
 using Newtonsoft.Json;
+using pscli.Services;
 using Shared.Models;
 
 namespace pscli.Utils;
@@ -25,5 +26,22 @@ public static class AppData
 
             File.WriteAllText(PsDataFile, jsonString);
         }
+    }
+
+    public static PsData? Load()
+    {
+        string jsonString = File.ReadAllText(PsDataFile);
+
+        PsData? psData;
+
+        var serializer = GeoJsonSerializer.Create();
+
+        using (var stringReader = new StringReader(jsonString))
+        using (var jsonReader = new JsonTextReader(stringReader))
+        {
+            psData = serializer.Deserialize<PsData>(jsonReader);
+        }
+
+        return psData;
     }
 }
