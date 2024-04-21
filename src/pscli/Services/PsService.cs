@@ -14,7 +14,7 @@ public class PsService
         var settings = MongoClientSettings.FromConnectionString(connectionString);
 
         // Set the ServerApi field of the settings object to set the version of the Stable API on the client
-        settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+        //settings.ServerApi = new ServerApi(ServerApiVersion.V1);
 
         // Create a new client and connect to the server
         var client = new MongoClient(settings);

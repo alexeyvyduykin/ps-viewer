@@ -17,6 +17,10 @@ public static class AppOptions
         if (File.Exists(PsOptionsFile) == false)
         {
             Console.WriteLine("Options file not exist, creating...");
+            
+            var path = Path.GetDirectoryName(PsOptionsFile)!;
+            _ = Directory.CreateDirectory(path);
+
             var res = JsonSerializer.Serialize(new PsOptions());
 
             // TODO: create 'temp' folder
