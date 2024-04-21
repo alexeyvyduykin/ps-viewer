@@ -19,7 +19,7 @@ services:
       - temp:/App/temp
     depends_on:
       - mongodb
-    command: push
+    command: info
 
 volumes:
   temp:
