@@ -1,8 +1,8 @@
-﻿using Shared.Models;
+﻿using Shared.Entities.MongoDB;
 
 namespace webapi.Services;
 
 public interface IDataService
 {
-    PlannedScheduleObject? GetPlannedScheduleObject();
+    PlannedScheduleEntity? GetPlannedScheduleObject();
 }

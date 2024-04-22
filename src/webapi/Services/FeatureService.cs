@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using AutoMapper;
+using Microsoft.Extensions.Caching.Memory;
 using Shared.Models;
 
 namespace webapi.Services;
@@ -17,15 +18,17 @@ public partial class FeatureService : IFeatureService
 {
     private readonly IMemoryCache _memoryCache;
     private readonly IDataService _dataService;
+    private readonly IMapper _mapper;
 
     private readonly SatelliteFeatureCache _satelliteCache;
     private readonly PreviewFeatureCache _previewCache;
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Использовать основной конструктор", Justification = "<Ожидание>")]
-    public FeatureService(IDataService dataService, IMemoryCache memoryCache)
+    public FeatureService(IDataService dataService, IMemoryCache memoryCache, IMapper mapper)
     {
         _memoryCache = memoryCache;
         _dataService = dataService;
+        _mapper = mapper;
 
         _satelliteCache = new SatelliteFeatureCache(memoryCache);
         _previewCache = new PreviewFeatureCache(memoryCache);

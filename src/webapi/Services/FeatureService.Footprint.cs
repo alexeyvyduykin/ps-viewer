@@ -12,10 +12,12 @@ public partial class FeatureService
     {
         var fc = new FeatureCollection();
 
-        var ps = _dataService.GetPlannedScheduleObject();
+        var res = _dataService.GetPlannedScheduleObject();
 
-        if (ps != null)
+        if (res != null)
         {
+            var ps = _mapper.Map<PlannedScheduleObject>(res);
+
             var footprints = ps.GetFootprints()
                 .Select(s =>
                 {
@@ -52,10 +54,12 @@ public partial class FeatureService
     {
         Feature? f = null;
 
-        var ps = _dataService.GetPlannedScheduleObject();
+        var res = _dataService.GetPlannedScheduleObject();
 
-        if (ps != null)
+        if (res != null)
         {
+            var ps = _mapper.Map<PlannedScheduleObject>(res);
+
             var footprint = ps.GetFootprint(observationTaskName);
 
             if (footprint != null)

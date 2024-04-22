@@ -1,5 +1,6 @@
 ﻿using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
+using Shared.Models;
 using webapi.Extensions;
 using webapi.Utils;
 
@@ -11,10 +12,12 @@ public partial class FeatureService
     {
         var fc = new FeatureCollection();
 
-        var ps = _dataService.GetPlannedScheduleObject();
+        var res = _dataService.GetPlannedScheduleObject();
 
-        if (ps != null)
+        if (res != null)
         {
+            var ps = _mapper.Map<PlannedScheduleObject>(res);
+
             var footprint = ps.GetFootprint(observationTaskName);
 
             if (footprint != null)

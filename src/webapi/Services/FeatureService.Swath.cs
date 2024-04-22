@@ -3,6 +3,7 @@ using FlatSpace.Utils;
 using FootprintViewerWebApi.Extensions;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
+using Shared.Models;
 using webapi.Extensions;
 using webapi.Geometries;
 using webapi.Utils;
@@ -88,10 +89,12 @@ public partial class FeatureService
 
     private FeatureCollection CreateSwathSegment(string observationTaskName, bool isLonLat = true)
     {
-        var ps = _dataService.GetPlannedScheduleObject();
+        var res2 = _dataService.GetPlannedScheduleObject();
 
-        if (ps != null)
+        if (res2 != null)
         {
+            var ps = _mapper.Map<PlannedScheduleObject>(res2);
+
             var observationTask = ps.GetObservationTaskResult(observationTaskName);
             var sat = ps.Satellites.Where(s => string.Equals(s.Name, observationTask?.SatelliteName)).SingleOrDefault();
 

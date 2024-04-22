@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Shared.Models;
 using webapi.Services;
 
@@ -8,11 +9,13 @@ namespace webapi.Controllers;
 public class PSController : BaseController
 {
     private readonly IDataService _dataService;
+    private readonly IMapper _mapper;
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Использовать основной конструктор", Justification = "<Ожидание>")]
-    public PSController(IDataService dataService)
+    public PSController(IDataService dataService, IMapper mapper)
     {
         _dataService = dataService;
+        _mapper = mapper;
     }
 
     [HttpGet]
@@ -22,7 +25,7 @@ public class PSController : BaseController
 
         if (res is { })
         {
-            return res;
+            return _mapper.Map<PlannedScheduleObject>(res);
         }
 
         return NotFound();

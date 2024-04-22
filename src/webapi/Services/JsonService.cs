@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using Shared.Models;
+using Shared.Entities.MongoDB;
 using System.Text.Json;
 
 namespace webapi.Services;
@@ -25,11 +25,11 @@ public class JsonService : IDataService
         };
     }
 
-    public PlannedScheduleObject? GetPlannedScheduleObject()
+    public PlannedScheduleEntity? GetPlannedScheduleObject()
     {
         //_memoryCache.Remove(CacheKeys.PlannedSchedule);
 
-        _memoryCache.TryGetValue<PlannedScheduleObject>(CacheKeys.PlannedSchedule, out var value);
+        _memoryCache.TryGetValue<PlannedScheduleEntity>(CacheKeys.PlannedSchedule, out var value);
 
         if (value == null)
         {
@@ -43,7 +43,7 @@ public class JsonService : IDataService
         return value;
     }
 
-    private PlannedScheduleObject? GetFromJson()
+    private PlannedScheduleEntity? GetFromJson()
     {
         var rootPath = _hostingEnvironment.ContentRootPath; //get the root path
 
@@ -53,9 +53,9 @@ public class JsonService : IDataService
 
         using StreamReader file = File.OpenText(fullPath);
 
-        var res = JsonSerializer.Deserialize(file.BaseStream, typeof(PlannedScheduleObject), _serializeOptions);
+        var res = JsonSerializer.Deserialize(file.BaseStream, typeof(PlannedScheduleEntity), _serializeOptions);
 
-        if (res is PlannedScheduleObject planned)
+        if (res is PlannedScheduleEntity planned)
         {
             return planned;
         }

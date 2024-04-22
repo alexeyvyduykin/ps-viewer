@@ -2,6 +2,7 @@
 using FlatSpace.Extensions;
 using FlatSpace.Utils;
 using NetTopologySuite.Features;
+using Shared.Models;
 using webapi.Extensions;
 using webapi.Geometries;
 using static FlatSpace.Extensions.OrbitExtensions;
@@ -37,10 +38,12 @@ public partial class FeatureService
 
     private FeatureCollection CreateTrackIntervals(string satelliteName, int node, bool isLonLat = true)
     {
-        var ps = _dataService.GetPlannedScheduleObject();
+        var res = _dataService.GetPlannedScheduleObject();
 
-        if (ps != null)
+        if (res != null)
         {
+            var ps = _mapper.Map<PlannedScheduleObject>(res);
+
             var ivals = ps.BuildObservableIntervals(satelliteName, node);
 
             var intervalTrack = FeatureBuilder.CreateTrack(ivals, isLonLat);
@@ -60,10 +63,12 @@ public partial class FeatureService
     {
         var dict = new Dictionary<int, FeatureCollection>();
 
-        var ps = _dataService.GetPlannedScheduleObject();
+        var res = _dataService.GetPlannedScheduleObject();
 
-        if (ps != null)
+        if (res != null)
         {
+            var ps = _mapper.Map<PlannedScheduleObject>(res);
+
             var observationTask = ps.GetObservationTaskResult(observationTaskName);
             var sat = ps.Satellites.Where(s => string.Equals(s.Name, observationTask?.SatelliteName)).SingleOrDefault();
 
@@ -107,10 +112,12 @@ public partial class FeatureService
     {
         var dict = new Dictionary<int, FeatureCollection>();
 
-        var ps = _dataService.GetPlannedScheduleObject();
+        var res = _dataService.GetPlannedScheduleObject();
 
-        if (ps != null)
+        if (res != null)
         {
+            var ps = _mapper.Map<PlannedScheduleObject>(res);
+
             var observationTask = ps.GetObservationTaskResult(observationTaskName);
             var sat = ps.Satellites.Where(s => string.Equals(s.Name, observationTask?.SatelliteName)).SingleOrDefault();
 
@@ -152,10 +159,12 @@ public partial class FeatureService
 
     private FeatureCollection CreateTaskResultMarkers(string satelliteName, int node, bool isLonLat = true)
     {
-        var ps = _dataService.GetPlannedScheduleObject();
+        var res = _dataService.GetPlannedScheduleObject();
 
-        if (ps != null)
+        if (res != null)
         {
+            var ps = _mapper.Map<PlannedScheduleObject>(res);
+
             var points0 = ps.BuildObservableMarkers(satelliteName, node);
 
             //-------
@@ -192,10 +201,12 @@ public partial class FeatureService
 
     private FeatureCollection CreateMarkerTrack(string satelliteName, int node, bool isLonLat = true)
     {
-        var ps = _dataService.GetPlannedScheduleObject();
+        var res = _dataService.GetPlannedScheduleObject();
 
-        if (ps != null)
+        if (res != null)
         {
+            var ps = _mapper.Map<PlannedScheduleObject>(res);
+
             var points = ps.BuildObservableMarkers(satelliteName, node);
 
             var us = points.Select(s => s.u).ToArray();

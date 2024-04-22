@@ -11,6 +11,8 @@ internal class Program
         builder.Services.AddTransient<IDataService, JsonService>();
         builder.Services.AddTransient<IFeatureService, FeatureService>();
 
+        builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
         builder.Services.AddControllers().AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.Converters.Add(new NetTopologySuite.IO.Converters.GeoJsonConverterFactory());
