@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{7BF2EA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Models", "shared\Shared.Models\Shared.Models.csproj", "{5043DFEE-DE7F-4338-803C-899F7F2956EB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Entities.MongoDB", "shared\Shared.Entities.MongoDB\Shared.Entities.MongoDB.csproj", "{E32E3B10-D0ED-4A0E-9C07-DB38D8556254}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5043DFEE-DE7F-4338-803C-899F7F2956EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5043DFEE-DE7F-4338-803C-899F7F2956EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5043DFEE-DE7F-4338-803C-899F7F2956EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E32E3B10-D0ED-4A0E-9C07-DB38D8556254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E32E3B10-D0ED-4A0E-9C07-DB38D8556254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E32E3B10-D0ED-4A0E-9C07-DB38D8556254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E32E3B10-D0ED-4A0E-9C07-DB38D8556254}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{C64BFB1E-4D59-4295-A6E6-F7D466D3AB8D} = {43411B52-1746-4C5A-B83C-2B905E39F8F1}
 		{4E6549D3-C4C4-4F95-AD9F-F027675F696A} = {43411B52-1746-4C5A-B83C-2B905E39F8F1}
 		{5043DFEE-DE7F-4338-803C-899F7F2956EB} = {7BF2EA64-BA60-4859-828E-99360DA43786}
+		{E32E3B10-D0ED-4A0E-9C07-DB38D8556254} = {7BF2EA64-BA60-4859-828E-99360DA43786}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AD4719A7-EF84-45F0-81CE-DEB23306EC44}
