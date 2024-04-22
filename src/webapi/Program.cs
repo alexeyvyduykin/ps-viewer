@@ -16,6 +16,7 @@ internal class Program
             options.JsonSerializerOptions.Converters.Add(new NetTopologySuite.IO.Converters.GeoJsonConverterFactory());
             //options.JsonSerializerOptions.Converters.Add(new InterfaceConverter<ITask>());
             //options.JsonSerializerOptions.Converters.Add(new InterfaceConverter<ITaskResult>());
+            options.JsonSerializerOptions.PropertyNamingPolicy = null;
         });
 
         // nothing to do with NTS.IO.GeoJSON4STJ specifically, but a recommended

@@ -3,7 +3,23 @@ using webapi.Services;
 
 namespace webapi.Controllers;
 
-[Route("api/features")]
+public class PreviewSearch
+{
+    public bool? HasFootprint { get; set; }
+
+    public bool? HasPreviewTrack { get; set; }
+
+    public bool? HasPreviewSwath { get; set; }
+}
+
+public class TrackSearch
+{
+    public bool? HasIntervals { get; set; }
+
+    public bool? IsMarkerTrack { get; set; }
+}
+
+[Route("api/[controller]/[action]")]
 public class FeatureController : BaseController
 {
     private readonly IFeatureService _featureService;
@@ -15,8 +31,8 @@ public class FeatureController : BaseController
     }
 
     [HttpGet]
-    [Route("preview/{observationTaskName}")]
-    public FeatureMap GetPreview(string observationTaskName, [FromQuery] bool? hasFootprint, [FromQuery] bool? hasPreviewTrack, [FromQuery] bool? hasPreviewSwath)
+    [Route("{observationTaskName}")]
+    public ActionResult<FeatureMap> GetPreview(string observationTaskName, [FromQuery] PreviewSearch previewSearch)
     {
         var options = new FeatureServiceOptions()
         {
@@ -25,28 +41,28 @@ public class FeatureController : BaseController
 
         PreviewFeatureType types = default;
 
-        if (hasFootprint == true)
+        if (previewSearch.HasFootprint == true)
         {
             types |= PreviewFeatureType.Footprint;
         }
 
-        if (hasPreviewTrack == true)
+        if (previewSearch.HasPreviewTrack == true)
         {
             types |= PreviewFeatureType.PreviewTrack;
             types |= PreviewFeatureType.PreviewIntervalTrack;
         }
 
-        if (hasPreviewSwath == true)
+        if (previewSearch.HasPreviewSwath == true)
         {
             types |= PreviewFeatureType.PreviewSwath;
         }
 
-        return _featureService.GetPreview(observationTaskName, types, options);
+        return Ok(_featureService.GetPreview(observationTaskName, types, options));
     }
 
     [HttpGet]
-    [Route("markers/{name}/{nodesFormat}")]
-    public NodeFeatureMap GetMarkers(string name, string nodesFormat)
+    [Route("{name}/{nodesFormat}")]
+    public ActionResult<NodeFeatureMap> GetMarkers(string name, string nodesFormat)
     {
         var options = new FeatureServiceOptions()
         {
@@ -57,12 +73,12 @@ public class FeatureController : BaseController
 
         var types = SatelliteFeatureType.PsMarker;
 
-        return _featureService.GetSatelliteFeatures(name, types, nodes, options);
+        return Ok(_featureService.GetSatelliteFeatures(name, types, nodes, options));
     }
 
     [HttpGet]
-    [Route("gss/{name}")]
-    public FeatureMap GetGroundStation(string name, [FromQuery] double[]? angles)
+    [Route("{name}")]
+    public ActionResult<FeatureMap> GetGS(string name, [FromQuery] double[]? angles)
     {
         var options = new GSOptions()
         {
@@ -70,26 +86,25 @@ public class FeatureController : BaseController
             Angles = angles,
         };
 
-        return _featureService.GetGroundStation(name, options);
+        return Ok(_featureService.GetGroundStation(name, options));
     }
 
     [HttpGet]
-    [Route("gts")]
-    public FeatureMap GetGroundTargets()
+    public ActionResult<FeatureMap> GetGTS()
     {
-        return _featureService.GetGroundTargets();
+        return Ok(_featureService.GetGroundTargets());
     }
 
     [HttpGet]
-    [Route("gts/{name}")]
-    public FeatureMap GetGroundTarget(string name)
+    [Route("{name}")]
+    public ActionResult<FeatureMap> GetGT(string name)
     {
-        return _featureService.GetGroundTarget(name);
+        return Ok(_featureService.GetGroundTarget(name));
     }
 
     [HttpGet]
-    [Route("tracks/{name}/{nodesFormat}")]
-    public NodeFeatureMap GetTracks(string name, string nodesFormat, [FromQuery] bool? hasIntervals, [FromQuery] bool? isMarkerTrack)
+    [Route("{name}/{nodesFormat}")]
+    public ActionResult<NodeFeatureMap> GetTracks(string name, string nodesFormat, [FromQuery] TrackSearch trackSearch)
     {
         var options = new FeatureServiceOptions()
         {
@@ -100,23 +115,26 @@ public class FeatureController : BaseController
 
         var types = SatelliteFeatureType.Track;
 
-        if (isMarkerTrack == true)
+        if (trackSearch.IsMarkerTrack == true)
         {
             types = SatelliteFeatureType.MarkerTrack;
         }
 
-        if (hasIntervals == true)
+        if (trackSearch.HasIntervals == true)
         {
             types |= SatelliteFeatureType.IntervalTrack;
         }
 
-        return _featureService.GetSatelliteFeatures(name, types, nodes, options);
+        return Ok(_featureService.GetSatelliteFeatures(name, types, nodes, options));
     }
 
     [HttpGet]
-    [Route("swaths/{name}/{nodesFormat}")]
-    public NodeFeatureMap GetSwaths(string name, string nodesFormat)
+    [Route("{name}/{nodesFormat}")]
+    public ActionResult<NodeFeatureMap> GetSwaths(string name, string nodesFormat)
     {
+        // TODO: ignore upper case
+        //var sat = Satellites.Where(s => s.name.Equals(name, StringComparison.OrdinalIgnoreCase)).ToSingle();
+
         var options = new FeatureServiceOptions()
         {
             IsLonLat = true
@@ -126,7 +144,7 @@ public class FeatureController : BaseController
 
         var types = SatelliteFeatureType.Left | SatelliteFeatureType.Right;
 
-        return _featureService.GetSatelliteFeatures(name, types, nodes, options);
+        return Ok(_featureService.GetSatelliteFeatures(name, types, nodes, options));
     }
 
     private static int[] FromNodeFormat(string format)

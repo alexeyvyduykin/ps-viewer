@@ -1,6 +1,90 @@
 @webapi_HostAddress = http://localhost:5202
 
-GET {{webapi_HostAddress}}/weatherforecast/
-Accept: application/json
+### PSController
 
+### Get planned schedule
+GET {{webapi_HostAddress}}/api/ps/getps
+Accept: application/json
+###
+### Get all satellites
+GET {{webapi_HostAddress}}/api/ps/getsatellites
+Accept: application/json
+###
+### Get all ground stations
+GET {{webapi_HostAddress}}/api/ps/getgss
+Accept: application/json
+###
+### Get all ground targets
+GET {{webapi_HostAddress}}/api/ps/getgts
+Accept: application/json
+###
+### Get all observation tasks
+GET {{webapi_HostAddress}}/api/ps/getobservationtasks
+Accept: application/json
+###
+### Get all communication tasks
+GET {{webapi_HostAddress}}/api/ps/getcommunicationtasks
+Accept: application/json
+###
+### Get all observation windows
+GET {{webapi_HostAddress}}/api/ps/getobservationwindows
+Accept: application/json
+###
+### Get all communication windows
+GET {{webapi_HostAddress}}/api/ps/getcommunicationwindows
+Accept: application/json
+###
+### Get all observation task results
+GET {{webapi_HostAddress}}/api/ps/getobservationtaskresults
+Accept: application/json
+###
+### Get all communication task results
+GET {{webapi_HostAddress}}/api/ps/getcommunicationtaskresults
+Accept: application/json
+###
+
+### FeatureController
+
+### Get preview featuremap with one option
+GET {{webapi_HostAddress}}/api/feature/getpreview/ObservationTask0032?hasfootprint=true
+Accept: application/json
+###
+### Get preview featuremap with options
+GET {{webapi_HostAddress}}/api/feature/getpreview/ObservationTask0032?hasfootprint=true&haspreviewtrack=true&haspreviewswath=true
+Accept: application/json
+###
+
+### Get markers featuremap 
+GET {{webapi_HostAddress}}/api/feature/getmarkers/Satellite3/2+12
+Accept: application/json
+###
+
+### Get ground station featuremap
+GET {{webapi_HostAddress}}/api/feature/getgs/Tokyo
+Accept: application/json
+###
+
+### Get ground targets featuremap
+GET {{webapi_HostAddress}}/api/feature/getgts
+Accept: application/json
+###
+
+### Get ground target featuremap with name
+GET {{webapi_HostAddress}}/api/feature/getgt/GroundTarget1543
+Accept: application/json
+###
+
+### Get tracks featuremap
+GET {{webapi_HostAddress}}/api/feature/gettracks/Satellite2/2+4
+Accept: application/json
+###
+
+### Get tracks featuremap with options
+GET {{webapi_HostAddress}}/api/feature/gettracks/Satellite2/2+4?hasintervals=true&ismarkertrack=true
+Accept: application/json
+###
+
+### Get tracks featuremap
+GET {{webapi_HostAddress}}/api/feature/getswaths/Satellite2/2+4
+Accept: application/json
 ###
