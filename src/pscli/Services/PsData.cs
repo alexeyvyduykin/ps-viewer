@@ -4,6 +4,7 @@ using Shared.Models;
 
 namespace pscli.Services;
 
+// TODO: use mongoDB entity shared class
 public class PsData : PlannedScheduleObject
 {
     [BsonId]
