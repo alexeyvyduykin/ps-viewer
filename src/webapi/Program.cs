@@ -8,8 +8,8 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddTransient<IDataService, JsonService>();
-        builder.Services.AddTransient<IFeatureService, FeatureService>();
+        builder.Services.AddScoped<IDataService, JsonService>();
+        builder.Services.AddScoped<IFeatureService, FeatureService>();
 
         builder.Services.AddAutoMapper(typeof(Program).Assembly);
 

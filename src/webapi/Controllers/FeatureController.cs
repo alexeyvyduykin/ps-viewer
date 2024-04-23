@@ -23,11 +23,15 @@ public class TrackSearch
 public class FeatureController : BaseController
 {
     private readonly IFeatureService _featureService;
+    private readonly ILogger<FeatureController> _logger;
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Использовать основной конструктор", Justification = "<Ожидание>")]
-    public FeatureController(IFeatureService featureService)
+    public FeatureController(ILogger<FeatureController> logger, IFeatureService featureService)
     {
         _featureService = featureService;
+        _logger = logger;
+
+        _logger.LogInformation("FeatureController started.");
     }
 
     [HttpGet]
@@ -57,7 +61,11 @@ public class FeatureController : BaseController
             types |= PreviewFeatureType.PreviewSwath;
         }
 
-        return Ok(_featureService.GetPreview(observationTaskName, types, options));
+        var res = _featureService.GetPreview(observationTaskName, types, options);
+
+        _logger.LogInformation("FeatureController.GetPreview method executing.");
+
+        return Ok(res);
     }
 
     [HttpGet]
@@ -73,7 +81,11 @@ public class FeatureController : BaseController
 
         var types = SatelliteFeatureType.PsMarker;
 
-        return Ok(_featureService.GetSatelliteFeatures(name, types, nodes, options));
+        var res = _featureService.GetSatelliteFeatures(name, types, nodes, options);
+
+        _logger.LogInformation("FeatureController.GetMarkers method executing.");
+
+        return Ok(res);
     }
 
     [HttpGet]
@@ -86,20 +98,32 @@ public class FeatureController : BaseController
             Angles = angles,
         };
 
-        return Ok(_featureService.GetGroundStation(name, options));
+        var res = _featureService.GetGroundStation(name, options);
+
+        _logger.LogInformation("FeatureController.GetGS method executing.");
+
+        return Ok(res);
     }
 
     [HttpGet]
     public ActionResult<FeatureMap> GetGTS()
     {
-        return Ok(_featureService.GetGroundTargets());
+        var res = _featureService.GetGroundTargets();
+
+        _logger.LogInformation("FeatureController.GetGTS method executing.");
+
+        return Ok(res);
     }
 
     [HttpGet]
     [Route("{name}")]
     public ActionResult<FeatureMap> GetGT(string name)
     {
-        return Ok(_featureService.GetGroundTarget(name));
+        var res = _featureService.GetGroundTarget(name);
+
+        _logger.LogInformation("FeatureController.GetGT method executing.");
+
+        return Ok(res);
     }
 
     [HttpGet]
@@ -125,7 +149,11 @@ public class FeatureController : BaseController
             types |= SatelliteFeatureType.IntervalTrack;
         }
 
-        return Ok(_featureService.GetSatelliteFeatures(name, types, nodes, options));
+        var res = _featureService.GetSatelliteFeatures(name, types, nodes, options);
+
+        _logger.LogInformation("FeatureController.GetTracks method executing.");
+
+        return Ok(res);
     }
 
     [HttpGet]
@@ -144,7 +172,11 @@ public class FeatureController : BaseController
 
         var types = SatelliteFeatureType.Left | SatelliteFeatureType.Right;
 
-        return Ok(_featureService.GetSatelliteFeatures(name, types, nodes, options));
+        var res = _featureService.GetSatelliteFeatures(name, types, nodes, options);
+
+        _logger.LogInformation("FeatureController.GetSwaths method executing.");
+
+        return Ok(res);
     }
 
     private static int[] FromNodeFormat(string format)

@@ -10,12 +10,16 @@ public class PSController : BaseController
 {
     private readonly IDataService _dataService;
     private readonly IMapper _mapper;
+    private readonly ILogger<PSController> _logger;
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Использовать основной конструктор", Justification = "<Ожидание>")]
-    public PSController(IDataService dataService, IMapper mapper)
+    public PSController(ILogger<PSController> logger, IDataService dataService, IMapper mapper)
     {
         _dataService = dataService;
         _mapper = mapper;
+        _logger = logger;
+
+        _logger.LogInformation("PSController started.");
     }
 
     [HttpGet]
@@ -25,7 +29,11 @@ public class PSController : BaseController
 
         if (res is { })
         {
-            return _mapper.Map<PlannedScheduleObject>(res);
+            var res1 = _mapper.Map<PlannedScheduleObject>(res);
+
+            _logger.LogInformation("PSController.GetPS method executing.");
+
+            return Ok(res1);
         }
 
         return NotFound();
@@ -47,6 +55,8 @@ public class PSController : BaseController
 
         if (res is { })
         {
+            _logger.LogInformation("PSController.GetSatellites method executing.");
+
             return res.Satellites;
         }
 
@@ -60,6 +70,8 @@ public class PSController : BaseController
 
         if (res is { })
         {
+            _logger.LogInformation("PSController.GetGSS method executing.");
+
             return res.GroundStations;
         }
 
@@ -73,6 +85,8 @@ public class PSController : BaseController
 
         if (res is { })
         {
+            _logger.LogInformation("PSController.GetGTS method executing.");
+
             return res.GroundTargets;
         }
 
@@ -86,6 +100,8 @@ public class PSController : BaseController
 
         if (res is { })
         {
+            _logger.LogInformation("PSController.GetObservationTasks method executing.");
+
             return res.ObservationTasks;
         }
 
@@ -99,6 +115,8 @@ public class PSController : BaseController
 
         if (res is { })
         {
+            _logger.LogInformation("PSController.GetCommunicationTasks method executing.");
+
             return res.CommunicationTasks;
         }
 
@@ -112,6 +130,8 @@ public class PSController : BaseController
 
         if (res is { })
         {
+            _logger.LogInformation("PSController.GetObservationWindows method executing.");
+
             return res.ObservationWindows;
         }
 
@@ -125,6 +145,8 @@ public class PSController : BaseController
 
         if (res is { })
         {
+            _logger.LogInformation("PSController.GetCommunicationWindows method executing.");
+
             return res.CommunicationWindows;
         }
 
@@ -138,6 +160,8 @@ public class PSController : BaseController
 
         if (res is { })
         {
+            _logger.LogInformation("PSController.GetObservationTaskResults method executing.");
+
             return res.ObservationTaskResults;
         }
 
@@ -151,6 +175,8 @@ public class PSController : BaseController
 
         if (res is { })
         {
+            _logger.LogInformation("PSController.GetCommunicationTaskResults method executing.");
+
             return res.CommunicationTaskResults;
         }
 
