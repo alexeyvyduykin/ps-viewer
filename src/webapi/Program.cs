@@ -18,6 +18,9 @@ internal class Program
             options.JsonSerializerOptions.Converters.Add(new NetTopologySuite.IO.Converters.GeoJsonConverterFactory());
             //options.JsonSerializerOptions.Converters.Add(new InterfaceConverter<ITask>());
             //options.JsonSerializerOptions.Converters.Add(new InterfaceConverter<ITaskResult>());
+
+            // Default - camelCases for response data
+            // Reset policy for using data like class for C# (pascal case)
             options.JsonSerializerOptions.PropertyNamingPolicy = null;
         });
 
