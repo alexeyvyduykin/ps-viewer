@@ -12,7 +12,7 @@ namespace webapi.Services;
 
 using Direction = Shared.Models.SwathDirection;
 
-public partial class FeatureService
+public partial class FeatureRepository
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Удалите неиспользуемые закрытые члены", Justification = "<Ожидание>")]
     private NodeFeatureMap CreateSwaths(string satelliteName, bool isLonLat = true)

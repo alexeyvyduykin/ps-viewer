@@ -6,7 +6,7 @@ using webapi.Utils;
 
 namespace webapi.Services;
 
-public partial class FeatureService
+public partial class FeatureRepository
 {
     private FeatureCollection CreatePreviewFootprint(string observationTaskName, bool isLonLat = true)
     {

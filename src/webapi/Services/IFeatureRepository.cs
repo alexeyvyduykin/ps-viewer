@@ -30,7 +30,7 @@ public enum PreviewFeatureType
     PreviewSwath = 8,
 }
 
-public interface IFeatureService
+public interface IFeatureRepository
 {
     NodeFeatureMap GetSatelliteFeatures(string satelliteName, SatelliteFeatureType types, int[] nodes, IFeatureServiceOptions? options = null);
 

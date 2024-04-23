@@ -8,8 +8,8 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddScoped<IDataService, JsonService>();
-        builder.Services.AddScoped<IFeatureService, FeatureService>();
+        builder.Services.AddScoped<IDataRepository, DataRepository>();
+        builder.Services.AddScoped<IFeatureRepository, FeatureRepository>();
 
         builder.Services.AddAutoMapper(typeof(Program).Assembly);
 

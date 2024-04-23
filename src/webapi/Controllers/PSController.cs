@@ -8,14 +8,13 @@ namespace webapi.Controllers;
 [Route("api/[controller]/[action]")]
 public class PSController : BaseController
 {
-    private readonly IDataService _dataService;
+    private readonly IDataRepository _dataRepository;
     private readonly IMapper _mapper;
     private readonly ILogger<PSController> _logger;
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Использовать основной конструктор", Justification = "<Ожидание>")]
-    public PSController(ILogger<PSController> logger, IDataService dataService, IMapper mapper)
+    public PSController(ILogger<PSController> logger, IDataRepository dataRepository, IMapper mapper)
     {
-        _dataService = dataService;
+        _dataRepository = dataRepository;
         _mapper = mapper;
         _logger = logger;
 
@@ -25,7 +24,7 @@ public class PSController : BaseController
     [HttpGet]
     public ActionResult<PlannedScheduleObject> GetPS()
     {
-        var res = _dataService.GetPlannedScheduleObject();
+        var res = _dataRepository.GetPlannedScheduleObject();
 
         if (res is { })
         {
@@ -51,7 +50,7 @@ public class PSController : BaseController
     [HttpGet]
     public ActionResult<IEnumerable<Satellite>> GetSatellites()
     {
-        var res = _dataService.GetPlannedScheduleObject();
+        var res = _dataRepository.GetPlannedScheduleObject();
 
         if (res is { })
         {
@@ -66,7 +65,7 @@ public class PSController : BaseController
     [HttpGet]
     public ActionResult<IEnumerable<GroundStation>> GetGSS()
     {
-        var res = _dataService.GetPlannedScheduleObject();
+        var res = _dataRepository.GetPlannedScheduleObject();
 
         if (res is { })
         {
@@ -81,7 +80,7 @@ public class PSController : BaseController
     [HttpGet]
     public ActionResult<IEnumerable<GroundTarget>> GetGTS()
     {
-        var res = _dataService.GetPlannedScheduleObject();
+        var res = _dataRepository.GetPlannedScheduleObject();
 
         if (res is { })
         {
@@ -96,7 +95,7 @@ public class PSController : BaseController
     [HttpGet]
     public ActionResult<IEnumerable<ObservationTask>> GetObservationTasks()
     {
-        var res = _dataService.GetPlannedScheduleObject();
+        var res = _dataRepository.GetPlannedScheduleObject();
 
         if (res is { })
         {
@@ -111,7 +110,7 @@ public class PSController : BaseController
     [HttpGet]
     public ActionResult<IEnumerable<CommunicationTask>> GetCommunicationTasks()
     {
-        var res = _dataService.GetPlannedScheduleObject();
+        var res = _dataRepository.GetPlannedScheduleObject();
 
         if (res is { })
         {
@@ -126,7 +125,7 @@ public class PSController : BaseController
     [HttpGet]
     public ActionResult<IEnumerable<Availability>> GetObservationWindows()
     {
-        var res = _dataService.GetPlannedScheduleObject();
+        var res = _dataRepository.GetPlannedScheduleObject();
 
         if (res is { })
         {
@@ -141,7 +140,7 @@ public class PSController : BaseController
     [HttpGet]
     public ActionResult<IEnumerable<Availability>> GetCommunicationWindows()
     {
-        var res = _dataService.GetPlannedScheduleObject();
+        var res = _dataRepository.GetPlannedScheduleObject();
 
         if (res is { })
         {
@@ -156,7 +155,7 @@ public class PSController : BaseController
     [HttpGet]
     public ActionResult<IEnumerable<ObservationTaskResult>> GetObservationTaskResults()
     {
-        var res = _dataService.GetPlannedScheduleObject();
+        var res = _dataRepository.GetPlannedScheduleObject();
 
         if (res is { })
         {
@@ -171,7 +170,7 @@ public class PSController : BaseController
     [HttpGet]
     public ActionResult<IEnumerable<CommunicationTaskResult>> GetCommunicationTaskResults()
     {
-        var res = _dataService.GetPlannedScheduleObject();
+        var res = _dataRepository.GetPlannedScheduleObject();
 
         if (res is { })
         {

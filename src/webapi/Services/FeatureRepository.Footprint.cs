@@ -5,7 +5,7 @@ using webapi.Geometries;
 
 namespace webapi.Services;
 
-public partial class FeatureService
+public partial class FeatureRepository
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Удалите неиспользуемые закрытые члены", Justification = "<Ожидание>")]
     private FeatureCollection CreateFootprints(bool isLonLat = true)

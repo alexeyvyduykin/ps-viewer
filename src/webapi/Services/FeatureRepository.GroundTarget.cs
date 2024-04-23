@@ -4,7 +4,7 @@ using webapi.Geometries;
 
 namespace webapi.Services;
 
-public partial class FeatureService
+public partial class FeatureRepository
 {
     private FeatureCollection CreateGroundTargets(bool isLonLat = true)
     {

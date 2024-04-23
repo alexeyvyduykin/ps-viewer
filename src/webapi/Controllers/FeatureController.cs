@@ -22,13 +22,12 @@ public class TrackSearch
 [Route("api/[controller]/[action]")]
 public class FeatureController : BaseController
 {
-    private readonly IFeatureService _featureService;
+    private readonly IFeatureRepository _featureRepository;
     private readonly ILogger<FeatureController> _logger;
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Использовать основной конструктор", Justification = "<Ожидание>")]
-    public FeatureController(ILogger<FeatureController> logger, IFeatureService featureService)
+    public FeatureController(ILogger<FeatureController> logger, IFeatureRepository featureRepository)
     {
-        _featureService = featureService;
+        _featureRepository = featureRepository;
         _logger = logger;
 
         _logger.LogInformation("FeatureController started.");
@@ -61,7 +60,7 @@ public class FeatureController : BaseController
             types |= PreviewFeatureType.PreviewSwath;
         }
 
-        var res = _featureService.GetPreview(observationTaskName, types, options);
+        var res = _featureRepository.GetPreview(observationTaskName, types, options);
 
         _logger.LogInformation("FeatureController.GetPreview method executing.");
 
@@ -81,7 +80,7 @@ public class FeatureController : BaseController
 
         var types = SatelliteFeatureType.PsMarker;
 
-        var res = _featureService.GetSatelliteFeatures(name, types, nodes, options);
+        var res = _featureRepository.GetSatelliteFeatures(name, types, nodes, options);
 
         _logger.LogInformation("FeatureController.GetMarkers method executing.");
 
@@ -98,7 +97,7 @@ public class FeatureController : BaseController
             Angles = angles,
         };
 
-        var res = _featureService.GetGroundStation(name, options);
+        var res = _featureRepository.GetGroundStation(name, options);
 
         _logger.LogInformation("FeatureController.GetGS method executing.");
 
@@ -108,7 +107,7 @@ public class FeatureController : BaseController
     [HttpGet]
     public ActionResult<FeatureMap> GetGTS()
     {
-        var res = _featureService.GetGroundTargets();
+        var res = _featureRepository.GetGroundTargets();
 
         _logger.LogInformation("FeatureController.GetGTS method executing.");
 
@@ -119,7 +118,7 @@ public class FeatureController : BaseController
     [Route("{name}")]
     public ActionResult<FeatureMap> GetGT(string name)
     {
-        var res = _featureService.GetGroundTarget(name);
+        var res = _featureRepository.GetGroundTarget(name);
 
         _logger.LogInformation("FeatureController.GetGT method executing.");
 
@@ -149,7 +148,7 @@ public class FeatureController : BaseController
             types |= SatelliteFeatureType.IntervalTrack;
         }
 
-        var res = _featureService.GetSatelliteFeatures(name, types, nodes, options);
+        var res = _featureRepository.GetSatelliteFeatures(name, types, nodes, options);
 
         _logger.LogInformation("FeatureController.GetTracks method executing.");
 
@@ -172,7 +171,7 @@ public class FeatureController : BaseController
 
         var types = SatelliteFeatureType.Left | SatelliteFeatureType.Right;
 
-        var res = _featureService.GetSatelliteFeatures(name, types, nodes, options);
+        var res = _featureRepository.GetSatelliteFeatures(name, types, nodes, options);
 
         _logger.LogInformation("FeatureController.GetSwaths method executing.");
 

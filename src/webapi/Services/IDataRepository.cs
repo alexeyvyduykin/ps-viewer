@@ -2,7 +2,7 @@
 
 namespace webapi.Services;
 
-public interface IDataService
+public interface IDataRepository
 {
     PlannedScheduleEntity? GetPlannedScheduleObject();
 }

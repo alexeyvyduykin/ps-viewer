@@ -4,7 +4,7 @@ using webapi.Geometries;
 
 namespace webapi.Services;
 
-public partial class FeatureService
+public partial class FeatureRepository
 {
     private FeatureCollection CreateGroundStation(string name, double[]? angles = null, bool isLonLat = true)
     {

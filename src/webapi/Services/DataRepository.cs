@@ -4,13 +4,15 @@ using System.Text.Json;
 
 namespace webapi.Services;
 
-public class JsonService : IDataService
+public class DataRepository : IDataRepository
 {
     private readonly IWebHostEnvironment _hostingEnvironment;
     private readonly IMemoryCache _memoryCache;
     private readonly JsonSerializerOptions _serializeOptions;
+    private readonly TimeSpan _cacheExpiration = TimeSpan.FromMinutes(5);
+    private readonly string _localPath = "Data/ps_demo.json";
 
-    public JsonService(IWebHostEnvironment hostingEnvironment, IMemoryCache memoryCache)
+    public DataRepository(IWebHostEnvironment hostingEnvironment, IMemoryCache memoryCache)
     {
         _hostingEnvironment = hostingEnvironment;
         _memoryCache = memoryCache;
@@ -27,16 +29,20 @@ public class JsonService : IDataService
 
     public PlannedScheduleEntity? GetPlannedScheduleObject()
     {
-        //_memoryCache.Remove(CacheKeys.PlannedSchedule);
+        var cacheKey = CacheKeys.PlannedSchedule;
 
-        _memoryCache.TryGetValue<PlannedScheduleEntity>(CacheKeys.PlannedSchedule, out var value);
+        _memoryCache.TryGetValue<PlannedScheduleEntity>(cacheKey, out var value);
 
         if (value == null)
         {
             value = GetFromJson();
             if (value != null)
             {
-                _memoryCache.Set(CacheKeys.PlannedSchedule, value, new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(5)));
+                // Sliding Expiration
+                var cacheEntryOptions = new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(_cacheExpiration);
+
+                _memoryCache.Set(CacheKeys.PlannedSchedule, value, cacheEntryOptions);
             }
         }
 
@@ -47,9 +53,7 @@ public class JsonService : IDataService
     {
         var rootPath = _hostingEnvironment.ContentRootPath; //get the root path
 
-        var localPath = "Data/ps_demo.json";
-
-        var fullPath = Path.Combine(rootPath, localPath); //combine the root path with that of our json file inside mydata directory
+        var fullPath = Path.Combine(rootPath, _localPath); //combine the root path with that of our json file inside mydata directory
 
         using StreamReader file = File.OpenText(fullPath);
 

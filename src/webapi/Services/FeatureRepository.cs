@@ -14,17 +14,18 @@ public class GSOptions : FeatureServiceOptions, IGSOptions
     public double[]? Angles { get; init; }
 }
 
-public partial class FeatureService : IFeatureService
+public partial class FeatureRepository : IFeatureRepository
 {
     private readonly IMemoryCache _memoryCache;
-    private readonly IDataService _dataService;
+    private readonly TimeSpan _cacheExpiration = TimeSpan.FromMinutes(5);
+    private readonly IDataRepository _dataService;
     private readonly IMapper _mapper;
 
     private readonly SatelliteFeatureCache _satelliteCache;
     private readonly PreviewFeatureCache _previewCache;
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0290:Использовать основной конструктор", Justification = "<Ожидание>")]
-    public FeatureService(IDataService dataService, IMemoryCache memoryCache, IMapper mapper)
+    public FeatureRepository(IDataRepository dataService, IMemoryCache memoryCache, IMapper mapper)
     {
         _memoryCache = memoryCache;
         _dataService = dataService;
@@ -34,7 +35,7 @@ public partial class FeatureService : IFeatureService
         _previewCache = new PreviewFeatureCache(memoryCache);
     }
 
-    private T GetFromCache<T>(object key, Func<T> creator, TimeSpan? relative = null)
+    private T GetFromCache<T>(object key, Func<T> creator)
     {
         _memoryCache.TryGetValue<T>(key, out var value);
 
@@ -43,12 +44,11 @@ public partial class FeatureService : IFeatureService
             value = creator.Invoke();
             if (value != null)
             {
-                if (relative == null)
-                {
-                    relative = TimeSpan.FromMinutes(5);
-                }
+                // Sliding Expiration
+                var cacheEntryOptions = new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(_cacheExpiration);
 
-                _memoryCache.Set(key, value, new MemoryCacheEntryOptions().SetAbsoluteExpiration((TimeSpan)relative));
+                _memoryCache.Set(key, value, cacheEntryOptions);
             }
         }
 

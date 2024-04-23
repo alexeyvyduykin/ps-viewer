@@ -9,7 +9,7 @@ using static FlatSpace.Extensions.OrbitExtensions;
 
 namespace webapi.Services;
 
-public partial class FeatureService
+public partial class FeatureRepository
 {
     private FeatureCollection CreateTrack(string satelliteName, int node, bool isLonLat = true)
     {
