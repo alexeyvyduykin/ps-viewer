@@ -21,7 +21,7 @@ internal class Program
 
             // Default - camelCases for response data
             // Reset policy for using data like class for C# (pascal case)
-            options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            //options.JsonSerializerOptions.PropertyNamingPolicy = null;
         });
 
         // nothing to do with NTS.IO.GeoJSON4STJ specifically, but a recommended
