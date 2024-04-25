@@ -5,7 +5,7 @@ import { defineStore, storeToRefs } from 'pinia'
 import myFetch from '@/utils/fetch'
 import { usePlannedScheduleStore } from './plannedSchedule'
 
-const url = 'api/ps/satellites'
+const url = 'api/ps/getsatellites'
 
 export const useSatelliteStore = defineStore('satellites', () => {
   const psStore = usePlannedScheduleStore()
@@ -29,11 +29,9 @@ export const useSatelliteStore = defineStore('satellites', () => {
     isLoading.value = false
   }
 
-  watch(ps, async (ps) => {
+  watch(ps, (ps) => {
     isLoading.value = true
     if (ps) {
-      await new Promise((resolve) => setTimeout(resolve, 200))
-
       satellites.value = ps.satellites
     }
     isLoading.value = false

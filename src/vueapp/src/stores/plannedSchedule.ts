@@ -17,8 +17,8 @@ export const usePlannedScheduleStore = defineStore('plannedSchedule', () => {
 
   const minNode = ref(1)
   const maxNode = ref(2)
-  const satelliteNames = ref<string[]>([])
-  const gsNames = ref<string[]>([])
+  const satelliteNames = ref<string[] | undefined>()
+  const gsNames = ref<string[] | undefined>()
 
   //const enabled = computed(() => !!url.value)
 
