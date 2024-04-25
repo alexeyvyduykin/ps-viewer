@@ -1,9 +1,3 @@
-<script setup lang="ts">
-defineProps<{
-  msg: string
-}>()
-</script>
-
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
@@ -11,9 +5,29 @@ defineProps<{
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
+      <div>{{ data }}</div>
     </h3>
   </div>
 </template>
+
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+
+defineProps<{
+  msg: string
+}>()
+
+const data = ref()
+
+onMounted(() => {
+  fetch('api/ps/getsatellites')
+    .then((r) => r.json())
+    .then((json) => {
+      data.value = json
+      return
+    })
+})
+</script>
 
 <style scoped>
 h1 {
