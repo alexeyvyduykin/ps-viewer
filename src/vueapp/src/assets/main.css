@@ -2,6 +2,7 @@
 @import './styles/layout.css';
 @import './styles/sidepanel.css';
 @import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.scss';
 
 #app {
   max-width: 1280px;
