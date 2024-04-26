@@ -32,7 +32,7 @@
       </div>
 
       <div class="flex mt-2">
-        <!-- <PrimeSelectButton
+        <PrimeSelectButton
           v-model="value"
           :options="options"
           optionLabel="value"
@@ -56,7 +56,7 @@
           <template #option="slotProps">
             <i :class="slotProps.option.icon"></i>
           </template>
-        </PrimeSelectButton> -->
+        </PrimeSelectButton>
       </div>
     </div>
     <div v-if="isLoading">
@@ -89,63 +89,65 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import TaskResultItem from '@/components/sidepanel/TaskResultItem.vue'
 import { useTaskResultStore } from '@/stores/taskResults'
 import { useDebounceFn } from '@vueuse/core'
 import TaskResultFilter from '@/components/sidepanel/TaskResultFilter.vue'
 import { storeToRefs } from 'pinia'
-//import { usePreviewStore } from '@/stores/layers/preview'
+import { usePreviewStore } from '@/stores/layers/preview'
 
 const isFilterOpen = ref(false)
 const store = useTaskResultStore()
 const { reset } = store
 const { isDirty, isLoading, searchString, filteringTaskResults } = storeToRefs(store)
-//const previewStore = usePreviewStore()
-//const { states, trackState } = storeToRefs(previewStore)
+const previewStore = usePreviewStore()
+const { states, trackState } = storeToRefs(previewStore)
 
-// interface OptionItem {
-//   icon: string
-//   value: string
-// }
+interface OptionItem {
+  icon: string
+  value: string
+}
 
-// const options = ref<OptionItem[]>([
-//   { icon: 'pi pi-image', value: 'Footprint' },
-//   { icon: 'pi pi-arrow-up', value: 'Track' },
-//   { icon: 'pi pi-arrows-h', value: 'Swath' },
-//   { icon: 'pi pi-map-marker', value: 'GroundTarget' }
-// ])
+const options = ref<OptionItem[]>([
+  { icon: 'pi pi-image', value: 'Footprint' },
+  { icon: 'pi pi-arrow-up', value: 'Track' },
+  { icon: 'pi pi-arrows-h', value: 'Swath' },
+  { icon: 'pi pi-map-marker', value: 'GroundTarget' }
+])
 
-// const options2 = ref([
-//   { icon: 'pi pi-globe', value: 'Full' },
-//   { icon: 'pi pi-share-alt', value: 'Segment' }
-// ])
+const options2 = ref([
+  { icon: 'pi pi-globe', value: 'Full' },
+  { icon: 'pi pi-share-alt', value: 'Segment' }
+])
 
-// const value = computed({
-//   get() {
-//     return states.value.map(
-//       (s) =>
-//         ({
-//           value: s
-//         }) as OptionItem
-//     )
-//   },
-//   set(newValue: OptionItem[]) {
-//     states.value = newValue.map((s) => s.value)
-//   }
-// })
+const value = computed({
+  get() {
+    return states.value.map(
+      (s) =>
+        ({
+          value: s
+        }) as OptionItem
+    )
+  },
+  set(newValue: OptionItem[]) {
+    states.value = newValue.map((s) => s.value)
+  }
+})
 
-//const isTrack = computed(() => value.value.some((s) => s.value === 'Track'))
+const isTrack = computed(() => value.value.some((s) => s.value === 'Track'))
 
-// const value2 = computed({
-//   get() {
-//     return { value: trackState.value } as OptionItem
-//   },
-//   set(newValue: OptionItem) {
-//     const isLeft = newValue.value === 'Full'
-//     trackState.value = isLeft ? 'Full' : 'Segment'
-//   }
-// })
+const value2 = computed({
+  get() {
+    return { value: trackState.value } as OptionItem
+  },
+  set(newValue: OptionItem) {
+    const isLeft = newValue.value === 'Full' ? 'Full' : 'Segment'
+    if (trackState.value !== isLeft) {
+      trackState.value = isLeft
+    }
+  }
+})
 
 store.getObservationTaskResults()
 
