@@ -88,7 +88,7 @@ export default class Layer4<P = any, G extends GeometryObject = GeometryObject> 
   //   });
   // }
 
-  ff1(feature: Feature, layer) {
+  ff1(feature: Feature, layer: any) {
     if (feature.properties?.Feature) {
       if (feature.properties.Feature === 'SegmentTrack') {
         if (feature.geometry.type == 'LineString') {

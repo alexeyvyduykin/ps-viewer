@@ -1,0 +1,38 @@
+{
+  "tooltips": {
+    "placeMarker": "Click to place marker",
+    "startCircle": "Click to place circle center",
+    "firstVertex": "Click to place first vertex",
+    "nextVertex": "Click to place next vertex",
+    "finishRectangle": "Click to finish",
+    "finishLine": "Click last marker to finish",
+    "finishCircle": "Click to finish circle",
+    "finishPolygon": "Click first marker to finish"
+  },
+  "actions": {
+    "finish": "Finish",
+    "cancel": "Cancel",
+    "remove": "Remove"
+  },
+  "buttonTitles": {
+    "drawRectangleButton": "Draw Rectangle AOI",
+    "drawCircleButton": "Draw Circle AOI",
+    "drawPolygonButton": "Draw Polygon AOI",
+    "editButton": "Edit",
+    "translateButton": "Translate",
+    "saveButton": "Save",
+    "cancelButton": "Cancel",
+    "deleteButton": "Remove"
+  },
+  "measurements": {
+    "totalLength": "Length",
+    "segmentLength": "Segment length",
+    "area": "Area",
+    "radius": "Radius",
+    "perimeter": "Perimeter",
+    "height": "Height",
+    "width": "Width",
+    "coordinates": "Position",
+    "coordinatesMarker": "Position Marker"
+  }
+}

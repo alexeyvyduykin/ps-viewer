@@ -1,0 +1,162 @@
+.leaflet-aoi-control {
+  /* font-family: Arial, Verdana;
+  font-size: 14px; */
+
+  &.hidden {
+    display: none;
+  }
+  /* padding: 4px;
+  background-color: greenyellow; */
+  display: block;
+
+  .aoi-buttons-container {
+    position: relative;
+    /* padding: 4px;
+    background-color: red; */
+
+    a.aoi-button {
+      border-radius: 0;
+
+      padding: 5px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 3;
+
+      .aoi-button-icon {
+        /* display: inline-block; */
+        font-size: 19px;
+        /* line-height: 24px; */
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+        background-color: #f4f4f4;
+      }
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    &.hidden a.aoi-button {
+      display: none;
+    }
+
+    /* horizontal */
+    &.h {
+      position: relative;
+      display: inline-block;
+    }
+
+    &.h.hidden {
+      display: none;
+    }
+
+    &.h:not(:first-child) {
+      margin: 0 0 0 4px;
+    }
+
+    &.h a.aoi-button {
+      border-radius: 2px;
+    }
+
+    &.h:last-child a.aoi-button {
+      border-radius: 2px;
+    }
+
+    &.h:first-child a.aoi-button {
+      border-radius: 2px;
+    }
+
+    &.h.select a.aoi-button {
+      border-radius: 2px 0 0 2px;
+    }
+
+    &.h.select:first-child a.aoi-button {
+      border-radius: 2px 0 0 2px;
+    }
+
+    &.h.select:last-child a.aoi-button {
+      border-radius: 2px 0 0 2px;
+    }
+
+    /* other */
+
+    &:first-child.select a.aoi-button {
+      border-top-right-radius: 0;
+    }
+
+    &.select a.aoi-button {
+      box-shadow: inset 0 -1px 5px 2px rgba(81, 77, 77, 0.31);
+    }
+
+    &.disable a.aoi-button {
+      background-color: rgba(255, 0, 0, 0.5);
+    }
+
+    &.disable a.aoi-button:hover {
+      cursor: default;
+    }
+
+    &:last-child a.aoi-button {
+      border-radius: 0 0 2px 2px;
+    }
+
+    &:first-child a.aoi-button {
+      border-radius: 2px 2px 0 0;
+    }
+
+    &:last-child a.aoi-button {
+      border-bottom: none;
+    }
+
+    &.select .aoi-actions-container {
+      display: block;
+    }
+
+    .aoi-actions-container {
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      display: none;
+      white-space: nowrap;
+      direction: ltr;
+
+      a.aoi-action {
+        padding: 0 10px;
+        background-color: #666;
+        color: #fff;
+        display: inline-block;
+        width: auto;
+        border-right: 1px solid #eee;
+        user-select: none;
+        border-bottom: none;
+        height: 29px;
+        line-height: 29px;
+
+        &:first-child {
+          border-radius: 0;
+        }
+
+        &:last-child {
+          border-radius: 0 3px 3px 0;
+          border-right: 0;
+        }
+
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          background-color: #777;
+        }
+      }
+    }
+  }
+}

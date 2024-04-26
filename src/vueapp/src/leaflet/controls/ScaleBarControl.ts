@@ -116,7 +116,7 @@ export class ScaleBarControl extends L.Control {
         label = meters < 1000 ? `${meters} m` : `${meters / 1000} km`
 
       const ratio = meters / maxMeters
-      this._scaleRect.style.width = `${Math.round(this._options.maxWidth * ratio)}px`
+      this._scaleRect.style.width = `${Math.round(this._options.maxWidth! * ratio)}px`
       this._scaleContainer.textContent = label
     }
   }

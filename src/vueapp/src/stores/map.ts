@@ -6,7 +6,6 @@ import { defineStore, storeToRefs } from 'pinia'
 import myFetch from '@/utils/fetch'
 import { usePlannedScheduleStore } from './plannedSchedule'
 import type { LatLng, ControlOptions, LatLngExpression } from 'leaflet'
-import type MyMap from '@/leaflet/MyMap'
 import * as L from 'leaflet'
 
 export const useMapStore = defineStore('map', () => {

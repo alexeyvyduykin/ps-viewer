@@ -46,9 +46,4 @@ onUnmounted(() => {
 })
 </script>
 
-<style lang="scss" scoped>
-#map {
-  height: 100%;
-  width: auto;
-}
-</style>
+<style scoped></style>

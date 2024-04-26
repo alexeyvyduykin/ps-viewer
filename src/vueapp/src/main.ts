@@ -5,6 +5,9 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 
+import './leafletInteractivity'
+import 'leaflet.path.drag'
+
 import PrimeVue from 'primevue/config'
 
 import BadgeDirective from 'primevue/badgedirective'

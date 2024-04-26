@@ -1,7 +1,7 @@
-//import { LeafletEditable } from '@/leaflet/LeafletEditable'
+import { LeafletEditable } from '@/leaflet/LeafletEditable'
 import CustomMap from '@/leaflet/CustomMap'
 import { scaleBar } from '@/leaflet/controls/ScaleBarControl'
-//import { AoiControl, aoiControl } from '@/leaflet/controls/aoi/AoiControl'
+import { AoiControl, aoiControl } from '@/leaflet/controls/aoi/AoiControl'
 import L from 'leaflet'
 
 class LeafletService {
@@ -26,10 +26,10 @@ class LeafletService {
 
       scaleBar({ isCompact: false }).addTo(this._map)
 
-      //this._aoiControl = aoiControl(this._map, {})
-      //this._aoiControl.addControls()
+      this._aoiControl = aoiControl(this._map, {})
+      this._aoiControl.addControls()
 
-      //this._editable = new LeafletEditable(this._aoiControl, this._map)
+      this._editable = new LeafletEditable(this._aoiControl, this._map)
 
       //this._editable.init();
     }

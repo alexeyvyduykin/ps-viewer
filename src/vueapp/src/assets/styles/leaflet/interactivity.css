@@ -1,0 +1,39 @@
+.marker-icon,
+.marker-icon:focus {
+  background-color: #ffffff;
+  border: 1px solid #3388ff;
+  border-radius: 50%;
+  margin: -8px 0 0 -8px !important;
+  width: 14px !important;
+  height: 14px !important;
+  outline: 0;
+  transition: opacity ease 0.3s;
+}
+
+.cursor-marker {
+  cursor: crosshair;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.cursor-marker.visible {
+  opacity: 1 !important;
+}
+
+.lastClick {
+  background-color: #3388ff;
+}
+
+.rect-style-marker,
+.rect-start-marker {
+  opacity: 0;
+}
+
+.rect-style-marker.visible,
+.rect-start-marker.visible {
+  opacity: 1 !important;
+}
+
+.leaflet-container.geoman-draw-cursor {
+  cursor: crosshair;
+}
