@@ -10,10 +10,9 @@
           <GroundTargetTab v-else-if="isSidePanelTabActive(3)" />
         </div>
       </div>
-      <!-- 
       <div class="layout-main-container">
-       <TheMap class="p-3" style="height: 580px"></TheMap>
-      </div> -->
+        <TheMap />
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +24,7 @@ import TaskResultTab from '@/components/sidepanel/TaskResult.vue'
 import SatelliteTab from '@/components/sidepanel/Satellite.vue'
 import GroundStationTab from '@/components/sidepanel/GroundStation.vue'
 import GroundTargetTab from '@/components/sidepanel/GroundTarget.vue'
+import TheMap from '@/components/TheMap.vue'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 

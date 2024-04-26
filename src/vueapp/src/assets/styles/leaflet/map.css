@@ -1,0 +1,9 @@
+.map-wrapper {
+  height: 100vh;
+  padding: 0rem;
+  margin: 0rem;
+}
+
+#map {
+  width: 100%;
+}
