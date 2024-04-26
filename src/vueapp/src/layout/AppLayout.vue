@@ -7,7 +7,7 @@
           <TaskResultTab v-if="isSidePanelTabActive(0)" />
           <SatelliteTab v-else-if="isSidePanelTabActive(1)" />
           <GroundStationTab v-else-if="isSidePanelTabActive(2)" />
-          <!-- <GroundTargetTab v-else-if="isSidePanelTabActive(3)" /> -->
+          <GroundTargetTab v-else-if="isSidePanelTabActive(3)" />
         </div>
       </div>
       <!-- 
@@ -24,6 +24,7 @@ import SidePanel from './SidePanel.vue'
 import TaskResultTab from '@/components/sidepanel/TaskResult.vue'
 import SatelliteTab from '@/components/sidepanel/Satellite.vue'
 import GroundStationTab from '@/components/sidepanel/GroundStation.vue'
+import GroundTargetTab from '@/components/sidepanel/GroundTarget.vue'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 
