@@ -1,6 +1,6 @@
 //import { LeafletEditable } from '@/leaflet/LeafletEditable'
 import CustomMap from '@/leaflet/CustomMap'
-//import { scaleBar } from '@/leaflet/controls/ScaleBarControl'
+import { scaleBar } from '@/leaflet/controls/ScaleBarControl'
 //import { AoiControl, aoiControl } from '@/leaflet/controls/aoi/AoiControl'
 import L from 'leaflet'
 
@@ -24,7 +24,7 @@ class LeafletService {
         maxBounds: new L.LatLngBounds(new L.LatLng(-90, -180), new L.LatLng(90, 180))
       })
 
-      //scaleBar(undefined).addTo(this._map)
+      scaleBar({ isCompact: false }).addTo(this._map)
 
       //this._aoiControl = aoiControl(this._map, {})
       //this._aoiControl.addControls()

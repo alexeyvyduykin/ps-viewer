@@ -5,6 +5,7 @@
 @import './styles/tabs/groundTargetFilter.css';
 @import './styles/tabs/groundStationItem.css';
 @import './styles/leaflet/map.css';
+@import './styles/leaflet/scaleBarControl.css';
 @import 'primeicons/primeicons.css';
 @import 'primeflex/primeflex.scss';
 @import 'leaflet/dist/leaflet.css';
