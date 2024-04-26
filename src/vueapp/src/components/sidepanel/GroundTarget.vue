@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex flex-column p-2" :style="{ height: '112px' }">
+    <div class="flex flex-column p-2" :style="{ height: '7rem' }">
       <div class="flex">
         <PrimeButton
           class="flex-auto text-xl"
@@ -21,15 +21,15 @@
       </PrimeOverlayPanel>
 
       <div class="mt-2">
-        <span class="flex p-input-icon-left">
-          <i class="pi pi-search" />
+        <PrimeIconField iconPosition="left">
+          <PrimeInputIcon class="pi pi-search" />
           <PrimeInputText
-            class="w-screen"
+            class="w-full"
             v-model="searchString"
             @input="gtsSearch"
             placeholder="Search"
           />
-        </span>
+        </PrimeIconField>
       </div>
     </div>
 
@@ -49,7 +49,7 @@
         }"
       >
         <template #list="slotProps">
-          <PrimeScrollPanel :style="{ height: 'calc(100vh - 112px - 62px - 14px)' }">
+          <PrimeScrollPanel :style="{ height: 'calc(100vh - 7rem - 4rem - 1rem)' }">
             <div class="grid grid-nogutter">
               <div v-for="item in slotProps.items" :key="item.name" class="col-12">
                 <GroundTargetItem :item="item" />

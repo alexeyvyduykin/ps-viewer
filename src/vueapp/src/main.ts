@@ -1,5 +1,5 @@
 import './assets/main.css'
-import 'primevue/resources/themes/aura-light-green/theme.css'
+import 'primevue/resources/themes/lara-light-green/theme.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -22,6 +22,8 @@ import Dialog from 'primevue/dialog'
 import DialogService from 'primevue/dialogservice'
 import Dropdown from 'primevue/dropdown'
 import DynamicDialog from 'primevue/dynamicdialog'
+import IconField from 'primevue/iconfield'
+import InputIcon from 'primevue/inputicon'
 import InputSwitch from 'primevue/inputswitch'
 import InputText from 'primevue/inputtext'
 import InputMask from 'primevue/inputmask'
@@ -79,6 +81,8 @@ app.component('PrimeDataViewLayoutOptions', DataViewLayoutOptions)
 app.component('PrimeDialog', Dialog)
 app.component('PrimeDropdown', Dropdown)
 app.component('PrimeDynamicDialog', DynamicDialog)
+app.component('PrimeIconField', IconField)
+app.component('PrimeInputIcon', InputIcon)
 app.component('PrimeInputMask', InputMask)
 app.component('PrimeInputNumber', InputNumber)
 app.component('PrimeInputSwitch', InputSwitch)

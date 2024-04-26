@@ -1,25 +1,21 @@
 <template>
-  <div style="width: 400px">
-    <div class="flex justify-content-left">
-      <div class="flex flex-column gap-2 ml-4">
-        <div class="flex -ml-4">
-          <PrimeCheckbox @click="checkboxClick" v-model="isSelected" binary>
-            <template #icon>
-              <span v-if="isIndeterminate" class="pi pi-circle-fill"></span>
-            </template>
-          </PrimeCheckbox>
-          <label class="ml-2" for="checkbox">Types</label>
-        </div>
-        <div v-for="item of types" :key="item.key" class="flex align-items-center">
-          <PrimeCheckbox
-            v-model="selectedTypes"
-            :inputId="item.key"
-            name="category"
-            :value="item.name"
-          />
-          <label class="ml-2" :for="item.key">{{ item.name }}</label>
-        </div>
-      </div>
+  <div class="groundtarget-filter-container">
+    <div class="header">
+      <PrimeCheckbox @click="checkboxClick" v-model="isSelected" binary>
+        <template #icon>
+          <span v-if="isIndeterminate" class="pi pi-circle-fill"></span>
+        </template>
+      </PrimeCheckbox>
+      <label class="ml-2" for="checkbox">Types</label>
+    </div>
+    <div class="items" v-for="item of types" :key="item.key">
+      <PrimeCheckbox
+        v-model="selectedTypes"
+        :inputId="item.key"
+        name="category"
+        :value="item.name"
+      />
+      <label class="ml-2" :for="item.key">{{ item.name }}</label>
     </div>
   </div>
 </template>

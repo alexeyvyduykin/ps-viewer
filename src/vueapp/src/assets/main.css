@@ -1,6 +1,9 @@
 @import './base.css';
 @import './styles/layout.css';
 @import './styles/sidepanel.css';
+@import './styles/tabs/taskResultFilter.css';
+@import './styles/tabs/groundTargetFilter.css';
+@import './styles/tabs/groundStationItem.css';
 @import 'primeicons/primeicons.css';
 @import 'primeflex/primeflex.scss';
 

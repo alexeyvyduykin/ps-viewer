@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex flex-column p-2" :style="{ height: '150px' }">
+    <div class="flex flex-column p-2" :style="{ height: '10rem' }">
       <div class="flex">
         <PrimeButton
           class="flex-auto text-xl"
@@ -20,15 +20,15 @@
       </PrimeOverlayPanel>
 
       <div class="mt-2">
-        <span class="flex p-input-icon-left">
-          <i class="pi pi-search" />
+        <PrimeIconField iconPosition="left">
+          <PrimeInputIcon class="pi pi-search" />
           <PrimeInputText
-            class="w-screen"
+            class="w-full"
             v-model="searchString"
             @input="taskResultSearch"
             placeholder="Search"
           />
-        </span>
+        </PrimeIconField>
       </div>
 
       <div class="flex mt-2">
@@ -59,6 +59,7 @@
         </PrimeSelectButton>
       </div>
     </div>
+
     <div v-if="isLoading">
       <PrimeProgressSpinner></PrimeProgressSpinner>
     </div>
@@ -75,7 +76,7 @@
         }"
       >
         <template #list="slotProps">
-          <PrimeScrollPanel :style="{ height: 'calc(100vh - 150px - 62px - 14px)' }">
+          <PrimeScrollPanel :style="{ height: 'calc(100vh - 10rem - 4rem - 1rem)' }">
             <div class="grid grid-nogutter">
               <div v-for="item in slotProps.items" :key="item.name" class="col-12">
                 <TaskResultItem v-bind:item="item" />

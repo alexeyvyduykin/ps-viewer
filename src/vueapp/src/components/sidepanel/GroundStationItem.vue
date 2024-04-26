@@ -1,7 +1,7 @@
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <template>
-  <div class="flex flex-column">
-    <div class="flex align-items-center p-3">
+  <div class="groundstation-item-container">
+    <div class="title-container">
       <div>
         <div class="text-xl font-bold">{{ item.name }}</div>
         <div class="text-sm">{{ toStringFormat(item.center) }}</div>
@@ -22,29 +22,26 @@
       </div>
     </div>
 
-    <div class="flex flex-column gap-3 p-3" v-if="states[name].visible">
-      <div class="grid align-items-center">
-        <label class="col">Range angles</label>
+    <div class="sub-container" v-if="states[name].visible">
+      <div class="column">
+        <label>Range angles</label>
         <div>{{ angles }}</div>
       </div>
-
-      <div class="grid align-items-center">
-        <div class="col">
-          <PrimeSlider
-            :disabled="disableMode"
-            v-model="states[name].rangeAngle"
-            range
-            :min="0"
-            :max="45"
-            :step="1"
-          />
-        </div>
+      <div class="column">
+        <PrimeSlider
+          class="w-full"
+          :disabled="disableMode"
+          v-model="states[name].rangeAngle"
+          range
+          :min="0"
+          :max="45"
+          :step="1"
+        />
       </div>
-
-      <div class="grid align-items-center">
-        <label class="col">Split method</label>
+      <div class="column">
+        <label>Split method</label>
         <PrimeDropdown
-          class="col-5 h-2rem"
+          class="w-12rem h-2rem"
           v-model="selectedCountMode"
           :options="availableCountModes"
           placeholder="Select a Count mode"
@@ -54,13 +51,13 @@
           }"
         />
       </div>
-
-      <div class="grid align-items-center">
-        <label class="col">Count segments</label>
+      <div class="column">
+        <label>Count segments</label>
 
         <PrimeInputNumber
+          class="h-2rem"
+          inputStyle="width: 6rem"
           :disabled="disableMode"
-          class="col-5 h-2rem"
           v-model="states[name].areaCount"
           mode="decimal"
           showButtons
@@ -70,23 +67,14 @@
           decrementButtonIcon="pi pi-minus"
           :min="1"
           :max="5"
-          :pt="{
-            root: { class: 'p-0' },
-            input: { class: 'border-noround w-5' },
-            incrementButton: { class: 'border-noround-left' },
-            decrementButton: { class: 'border-noround-right' }
-          }"
         />
       </div>
-      <div class="flex flex-column">
+      <div class="items">
         <div v-for="item in colorRects" :key="item.index">
-          <div class="flex grid-nogutter align-items-center">
-            <div
-              class="col-fixed"
-              :style="{ 'background-color': item.color, width: '60px', height: '20px' }"
-            ></div>
+          <div class="flex align-items-center">
+            <div class="rect" :style="{ 'background-color': item.color }"></div>
             <div class="ml-3 mr-2">-</div>
-            <div class="flex col-1 justify-content-end">
+            <div>
               {{ Number(item.angle).toFixed(2) }}
             </div>
           </div>

@@ -1,0 +1,31 @@
+.taskresult-filter-container {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.taskresult-filter-container .column {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.taskresult-filter-container .list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 0.5rem;
+}
+
+.taskresult-filter-container .list-container .header {
+  display: flex;
+  align-items: center;
+}
+
+.taskresult-filter-container .list-container .items {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}

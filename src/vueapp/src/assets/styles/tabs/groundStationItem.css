@@ -1,0 +1,36 @@
+.groundstation-item-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.groundstation-item-container .title-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.groundstation-item-container .sub-container {
+  display: flex;
+  flex-direction: column;
+  align-items: first;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.groundstation-item-container .column {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.groundstation-item-container .items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.groundstation-item-container .rect {
+  width: 4rem;
+  height: 1.4rem;
+  border: 0.1rem solid var(--primary-color);
+}

@@ -1,0 +1,18 @@
+.groundtarget-filter-container {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.groundtarget-filter-container .header {
+  display: flex;
+  align-items: center;
+}
+
+.groundtarget-filter-container .items {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}
