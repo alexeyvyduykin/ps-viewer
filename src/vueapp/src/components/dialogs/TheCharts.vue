@@ -1,10 +1,11 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <template>
   <div class="dialog-charts-wrapper">
     <PrimeButton class="btn" @click="showApexChart">
       <div>Apex Chart</div>
     </PrimeButton>
-    <PrimeButton class="btn" @click="showGoogleChart">
-      <div>Google Chart</div>
+    <PrimeButton class="btn" @click="showEChart">
+      <div>EChart</div>
     </PrimeButton>
     <PrimeButton class="btn" @click="showTimelineChart">
       <div>Timelines Chart</div>
@@ -17,6 +18,7 @@ import { useDialogStore } from '@/stores/dialog'
 //import ApexChart from '@/components/charts/ApexChart.vue'
 //import GoogleChart from '@/components/charts/GoogleChart.vue'
 import TimelineChart from '@/components/charts/TimelineChart.vue'
+import EChart from '@/components/charts/EChart.vue'
 import DialogFooter from '@/components/dialogs/DialogFooter.vue'
 
 const dialogStore = useDialogStore()
@@ -37,6 +39,16 @@ const showGoogleChart = () => {
   //     width: '100rem'
   //   })
 }
+
+const showEChart = () => {
+  dialogStore.open({
+    header: 'EChart',
+    content: EChart,
+    footer: DialogFooter,
+    width: '100rem'
+  })
+}
+
 const showTimelineChart = () => {
   dialogStore.open({
     header: 'Timeline Chart',
