@@ -8,6 +8,7 @@
 @import './styles/leaflet/scaleBarControl.css';
 @import './styles/leaflet/interactivity.css';
 @import './styles/leaflet/aoi.css';
+@import './styles/dialogs/charts.css';
 @import 'primeicons/primeicons.css';
 @import 'primeflex/primeflex.scss';
 @import 'leaflet/dist/leaflet.css';

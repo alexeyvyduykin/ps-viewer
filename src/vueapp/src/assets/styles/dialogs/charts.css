@@ -1,0 +1,18 @@
+.dialog-charts-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+  gap: 2rem;
+}
+
+.dialog-charts-wrapper .btn {
+  width: 10rem;
+  height: 10rem;
+  font-size: 1.25rem;
+}
+
+.dialog-timelinechart-wrapper {
+  display: flex;
+  height: 32rem;
+  border: 1px solid black;
+}

@@ -27,6 +27,7 @@
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
     "primevue": "^3.51.0",
+    "timelines-chart": "^2.12.1",
     "typescript-fsm": "^1.4.5",
     "vue": "^3.4.21"
   },

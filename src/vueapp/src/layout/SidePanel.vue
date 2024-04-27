@@ -41,12 +41,16 @@
 </template>
 
 <script setup lang="ts">
+import { useDialogStore } from '@/stores/dialog'
 import { useLayoutStore } from '@/stores/layout'
 import { storeToRefs } from 'pinia'
+import TheCharts from '@/components/dialogs/TheCharts.vue'
+import DialogFooter from '@/components/dialogs/DialogFooter.vue'
 
 const layoutStore = useLayoutStore()
 const { setSidebarItem, onMenuToggle } = layoutStore
 const { isSidebarOpen } = storeToRefs(layoutStore)
+const dialogStore = useDialogStore()
 
 const itemClick = (index: number) => {
   setSidebarItem(index)
@@ -98,12 +102,12 @@ const nextClick = () => {
 }
 
 const showCharts = () => {
-  //   dialogStore.open({
-  //     header: 'Select Charts',
-  //     content: TheCharts,
-  //     footer: DialogFooter,
-  //     enableNext: false
-  //   })
+  dialogStore.open({
+    header: 'Select Charts',
+    content: TheCharts,
+    footer: DialogFooter,
+    enableNext: false
+  })
 }
 </script>
 
