@@ -20,8 +20,8 @@
 <script setup lang="ts">
 import type { ObservationTaskResult } from '@/types'
 import { usePreviewStore } from '@/stores/layers/preview'
-//import { useMapStore } from '@/stores/map'
-//import { LatLng } from 'leaflet'
+import { useMapStore } from '@/stores/map'
+import { LatLng } from 'leaflet'
 import { computed, onBeforeMount } from 'vue'
 
 const { item } = defineProps({
@@ -36,16 +36,16 @@ const satStr = computed(() => {
 })
 
 const previewStore = usePreviewStore()
-//const mapStore = useMapStore()
+const mapStore = useMapStore()
 const { preview /*, previewSatellite*/ } = previewStore
 
 const previewClick = async () => {
   await preview(item.taskName)
-  // const latLng = new LatLng(
-  //   item.geometry.center.coordinates[1],
-  //   item.geometry.center.coordinates[0]
-  // )
-  //mapStore.flyToLocation(latLng)
+  const latLng = new LatLng(
+    item.geometry.center.coordinates[1],
+    item.geometry.center.coordinates[0]
+  )
+  mapStore.flyToLocation(latLng)
 }
 
 const previewSatelliteClick = async () => {
