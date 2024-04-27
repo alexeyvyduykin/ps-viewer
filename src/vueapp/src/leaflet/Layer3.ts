@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import L from 'leaflet'
 import type { GeoJSONOptions } from 'leaflet'
-import type { GeometryObject, GeoJsonObject, MultiPolygon, FeatureCollection } from 'geojson'
-import { ref, toValue, isProxy, watch, toRaw, watchEffect, type Ref, computed } from 'vue'
+import type { GeometryObject, GeoJsonObject, FeatureCollection } from 'geojson'
+import { watch, computed } from 'vue'
 import { useGroundTargetLeafletStore } from '@/stores/layers/groundTargets'
 import { storeToRefs } from 'pinia'
-import { whenever } from '@vueuse/core'
-import { type ColorRect, createAngles } from '@/composables/groundStationHelper'
-import { useFromColorHuePalette } from '@/composables/palettes'
 import { useMapStore } from '@/stores/map'
 
 export default class Layer3<P = any, G extends GeometryObject = GeometryObject> extends L.GeoJSON<

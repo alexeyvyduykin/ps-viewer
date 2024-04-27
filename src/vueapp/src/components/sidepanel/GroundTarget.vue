@@ -75,7 +75,7 @@ const { isLoading, isDirty, filteringGts, searchString } = storeToRefs(store)
 const { reset } = store
 const isFilterOpen = ref(false)
 
-store.getGroundTargets()
+//store.getGroundTargets()
 
 const debouncedFn = useDebounceFn(() => {
   store.getGroundTargets()

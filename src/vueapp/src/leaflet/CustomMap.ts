@@ -27,7 +27,8 @@ export default class CustomMap extends L.Map {
 
     this._layerManager.addLayer(_layer1, true, 'Tracks')
     this._layerManager.addLayer(_layer2, true, 'GroundStations')
-    this._layerManager.addHiddenLayer(_layer3, 'GroundTargets')
+    //this._layerManager.addHiddenLayer(_layer3, 'GroundTargets')
+    this._layerManager.addLayer(_layer3, true, 'GroundTargets')
     this._layerManager.addHiddenLayer(_layer5, 'Preview')
   }
 }

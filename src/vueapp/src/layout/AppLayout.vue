@@ -27,6 +27,10 @@ import GroundTargetTab from '@/components/sidepanel/GroundTarget.vue'
 import TheMap from '@/components/TheMap.vue'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
+import { useTaskResultStore } from '@/stores/taskResults'
+import { useSatelliteStore } from '@/stores/satellites'
+import { useGroundStationStore } from '@/stores/groundStations'
+import { useGroundTargetStore } from '@/stores/groundTargets'
 
 const layoutStore = useLayoutStore()
 const { isSidePanelTabActive } = layoutStore
@@ -38,6 +42,11 @@ const containerClass = computed(() => {
     'layout-open': isSidebarOpen.value
   }
 })
+
+useTaskResultStore().getObservationTaskResults()
+useSatelliteStore().getSatellites()
+useGroundStationStore().getGroundStations()
+useGroundTargetStore().getGroundTargets()
 </script>
 
 <style scoped></style>

@@ -32,7 +32,7 @@ import { storeToRefs } from 'pinia'
 const store = useSatelliteStore()
 const { isLoading, satellites } = storeToRefs(store)
 
-store.getSatellites()
+//store.getSatellites()
 </script>
 
 <style scoped lang="scss"></style>
